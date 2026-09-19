@@ -1,0 +1,659 @@
+/* Importación de tipografías: Roboto, Montserrat y Brush/Script */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;800;900&family=Roboto:wght@400;700;900&display=swap');
+
+/* Palette Rojo y Negro */
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+    --red-primary: #e60000;
+    --red-glow: #ff1a1a;
+    --gold: #e5be65;
+    --text-white: #ffffff;
+    --text-muted: #b3b3b3;
+    --wpp-green: #25d366;
+    --font-head: 'Montserrat', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    --font-script: 'Caveat', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+/* Header estilizado */
+.header {
+    background-color: rgba(10, 10, 10, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--red-primary);
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-brand {
+    font-family: var(--font-head);
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--text-white);
+    background: linear-gradient(135deg, #ffffff 40%, var(--red-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-right: 2px solid #333;
+    padding-right: 12px;
+    line-height: 1;
+}
+
+.logo-text h1 {
+    font-family: var(--font-head);
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: var(--text-white);
+    line-height: 1;
+}
+
+.logo-text .slogan {
+    font-family: var(--font-script);
+    color: var(--text-white);
+    font-size: 1.2rem;
+}
+
+.navbar a {
+    color: var(--text-white);
+    text-decoration: none;
+    margin-left: 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--red-primary);
+}
+
+/* Hero */
+.hero {
+    height: 55vh;
+    background: radial-gradient(circle at center, #3a0000 0%, #0a0a0a 75%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    border-bottom: 1px solid rgba(230, 0, 0, 0.3);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-badge {
+    display: inline-block;
+    background-color: var(--red-primary);
+    color: var(--text-white);
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: 1.2rem;
+    padding: 0.3rem 1.5rem;
+    transform: rotate(-2deg);
+    box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.hero-content h2 {
+    font-family: var(--font-head);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--text-white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.hero-content h2 span {
+    color: var(--gold);
+    display: block;
+    font-size: 4rem;
+    text-shadow: 0 0 20px rgba(229, 190, 101, 0.3);
+}
+
+.hero-subtitle {
+    font-family: var(--font-script);
+    font-size: 2.2rem;
+    color: var(--red-glow);
+}
+
+/* Sección de Garantías e Íconos */
+.features-section {
+    background-color: #111;
+    padding: 2.5rem 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.feature-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgba(230, 0, 0, 0.4);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    background: rgba(230, 0, 0, 0.05);
+}
+
+.feature-icon {
+    font-size: 2.2rem;
+    color: var(--red-primary);
+}
+
+.feature-info h3 {
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.highlight-red {
+    color: var(--red-glow);
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+.highlight-gold {
+    color: var(--gold);
+    font-weight: 700;
+}
+
+/* Sección Catálogo y Selector de Opciones */
+.catalog-section {
+    padding: 4rem 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Ocultar radio inputs */
+.tab-input {
+    display: none;
+}
+
+/* Contenedor de Botones Selector */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.tab-btn {
+    background-color: #1a1a1a;
+    color: var(--text-white);
+    border: 2px solid #333;
+    padding: 0.8rem 1.8rem;
+    font-family: var(--font-head);
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    border-color: var(--red-primary);
+    color: var(--red-glow);
+}
+
+.title-underline {
+    width: 100px;
+    height: 4px;
+    background-color: var(--red-primary);
+    margin: 1rem auto 3rem auto;
+    border-radius: 2px;
+}
+
+/* Lógica de Alternancia con CSS puro */
+.products-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+#tab-disenador:checked ~ .content-disenador,
+#tab-arabes:checked ~ .content-arabes,
+#tab-nicho:checked ~ .content-nicho {
+    display: grid;
+}
+
+/* Estilos de botones activos */
+#tab-disenador:checked ~ .tab-buttons label[for="tab-disenador"],
+#tab-arabes:checked ~ .tab-buttons label[for="tab-arabes"],
+#tab-nicho:checked ~ .tab-buttons label[for="tab-nicho"] {
+    background: linear-gradient(135deg, var(--red-primary), #990000);
+    border-color: var(--red-glow);
+    color: var(--text-white);
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.6);
+}
+
+/* Tarjetas de producto */
+.product-card {
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #222;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--red-primary);
+    box-shadow: 0 8px 20px rgba(230, 0, 0, 0.3);
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--red-primary);
+    color: var(--text-white);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.product-img {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+}
+
+.product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img img {
+    transform: scale(1.08);
+}
+
+.product-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.category {
+    font-size: 0.75rem;
+    color: var(--red-glow);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.product-info h3 {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    margin: 0.4rem 0;
+    color: var(--text-white);
+}
+
+.description {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.btn-buy {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 0;
+    background-color: var(--red-primary);
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: var(--red-glow);
+}
+
+/* Métodos de Pago y Ubicación */
+.payment-location {
+    background-color: #111;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+}
+
+.payment-methods {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.pay-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 900;
+}
+
+.nequi {
+    background-color: #200020;
+    color: #e6007e;
+    border: 1px solid #e6007e;
+}
+
+.bancolombia {
+    background-color: #1a1a1a;
+    color: #fdda24;
+    border: 1px solid #fdda24;
+}
+
+.location-badge {
+    color: var(--red-glow);
+    font-weight: 700;
+}
+
+/* Botón Flotante de WhatsApp */
+.wpp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--wpp-green);
+    color: var(--text-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.wpp-float:hover {
+    transform: scale(1.1);
+}
+
+/* Footer estilo Póster */
+.footer {
+    background-color: #050505;
+    padding: 3rem 1rem 2rem 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-msg {
+    font-size: 1.05rem;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.wpp-contact-info {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+}
+
+.wpp-contact-info i {
+    color: var(--wpp-green);
+}
+
+.cta-cursive {
+    font-family: var(--font-script);
+    font-size: 2rem;
+    color: var(--red-glow);
+}
+
+.footer-divider {
+    width: 60px;
+    height: 1px;
+    background-color: #333;
+    margin: 1.5rem auto;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .navbar a {
+        margin: 0 0.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content h2 span {
+        font-size: 2.8rem;
+    }
+
+    .features-container {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+        text-align: center;
+    }
+    /* Caja y texto de la frase con máxima prioridad */
+.luxury-quote-box {
+    background: linear-gradient(145deg, #181818, #0d0d0d) !important;
+    border: 1px solid rgba(229, 190, 101, 0.5) !important;
+    border-left: 4px solid #e5be65 !important;
+    border-right: 4px solid #e5be65 !important;
+    border-radius: 8px !important;
+    padding: 1.5rem 2rem !important;
+    margin: 1.5rem auto 2.5rem auto !important;
+    max-width: 750px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(229, 190, 101, 0.15) !important;
+}
+
+.luxury-quote-text {
+    font-family: 'Playfair Display', 'Montserrat', serif, sans-serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    font-style: italic !important;
+    color: #e5be65 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8 !important;
+    margin: 0 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+ /* --- Ajuste de imágenes del catálogo --- */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.product-img {
+    width: 100%;
+    height: 260px;
+    background-color: #ffffff; /* Fondo blanco para limpiar el recorte */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.product-img img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain !important; /* Fuerza a que se vea el frasco completo sin Zoom */
+}   
+/* Ocultar los radio buttons del sistema de pestañas */
+.tab-radio {
+    display: none;
+}
+
+/* Ocultar todas las categorías por defecto */
+.content-disenador,
+.content-arabes,
+.content-nicho {
+    display: none;
+}
+
+/* Lógica CSS pura para mostrar la categoría seleccionada */
+#tab-disenador:checked ~ .content-disenador {
+    display: grid !important;
+}
+
+#tab-arabes:checked ~ .content-arabes {
+    display: grid !important;
+}
+
+#tab-nicho:checked ~ .content-nicho {
+    display: grid !important;
+}
+
+/* Estilos de los botones (labels) y estado activo */
+.btn-tab {
+    cursor: pointer;
+    user-select: none;
+}
+
+#tab-disenador:checked ~ .category-buttons label[for="tab-disenador"],
+#tab-arabes:checked ~ .category-buttons label[for="tab-arabes"],
+#tab-nicho:checked ~ .category-buttons label[for="tab-nicho"] {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-color: #ff0000;
+}
+/* --- Sistema de pestañas con Radio Buttons (CSS Puro) --- */
+.tab-radio {
+    display: none;
+}
+
+/* Ocultar todas las categorías por defecto */
+.content-disenador,
+.content-arabes,
+.content-nicho {
+    display: none;
+}
+
+/* Mostrar la categoría seleccionada */
+#tab-disenador:checked ~ .content-disenador {
+    display: grid !important;
+}
+
+#tab-arabes:checked ~ .content-arabes {
+    display: grid !important;
+}
+
+#tab-nicho:checked ~ .content-nicho {
+    display: grid !important;
+}
+
+/* Estilos originales del contenedor de botones */
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+/* Estilo original de los botones (labels) */
+.category-buttons .btn-tab {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #333;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+/* Efecto hover */
+.category-buttons .btn-tab:hover {
+    border-color: #ff0000;
+    color: #ffffff;
+}
+
+/* Estado ACTIVO (Botón seleccionado con iluminación roja) */
+#tab-disenador:checked ~ .category-buttons label[for="tab-disenador"],
+#tab-arabes:checked ~ .category-buttons label[for="tab-arabes"],
+#tab-nicho:checked ~ .category-buttons label[for="tab-nicho"] {
+    background-color: #e50914;
+    color: #ffffff;
+    border-color: #e50914;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+}
+}
