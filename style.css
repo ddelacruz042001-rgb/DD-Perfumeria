@@ -1,7 +1,7 @@
-/* Importación de tipografías: Roboto, Montserrat y Brush/Script */
+/* Importación de tipografías: Roboto, Montserrat y Caveat */
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;600;800;900&family=Roboto:wght@400;700;900&display=swap');
 
-/* Palette Rojo y Negro */
+/* Paleta Rojo y Negro */
 :root {
     --bg-dark: #0a0a0a;
     --bg-card: #141414;
@@ -197,79 +197,128 @@ body {
     font-weight: 700;
 }
 
-/* Sección Catálogo y Selector de Opciones */
+/* Sección Catálogo */
 .catalog-section {
     padding: 4rem 5%;
     max-width: 1300px;
     margin: 0 auto;
 }
 
-/* Ocultar radio inputs */
-.tab-input {
+/* Ocultar inputs de control */
+.tab-radio,
+.gender-radio {
     display: none;
 }
 
-/* Contenedor de Botones Selector */
-.tab-buttons {
+/* Botones de Categorías */
+.category-buttons {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 15px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
 }
 
-.tab-btn {
+.category-buttons .btn-tab {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid #333;
     background-color: #1a1a1a;
-    color: var(--text-white);
-    border: 2px solid #333;
-    padding: 0.8rem 1.8rem;
-    font-family: var(--font-head);
-    font-size: 1rem;
-    font-weight: 800;
-    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
     letter-spacing: 1px;
-    border-radius: 50px;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
+    user-select: none;
 }
 
-.tab-btn:hover {
+.category-buttons .btn-tab:hover {
     border-color: var(--red-primary);
-    color: var(--red-glow);
+    color: #ffffff;
 }
 
-.title-underline {
-    width: 100px;
-    height: 4px;
-    background-color: var(--red-primary);
-    margin: 1rem auto 3rem auto;
-    border-radius: 2px;
+/* Botones de Género */
+.gender-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
 }
 
-/* Lógica de Alternancia con CSS puro */
-.products-grid {
-    display: none;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+.btn-gender {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid #333;
+    background-color: #121212;
+    color: var(--text-muted);
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
 }
 
-#tab-disenador:checked ~ .content-disenador,
-#tab-arabes:checked ~ .content-arabes,
-#tab-nicho:checked ~ .content-nicho {
-    display: grid;
+.btn-gender:hover {
+    border-color: var(--gold);
+    color: #ffffff;
 }
 
-/* Estilos de botones activos */
-#tab-disenador:checked ~ .tab-buttons label[for="tab-disenador"],
-#tab-arabes:checked ~ .tab-buttons label[for="tab-arabes"],
-#tab-nicho:checked ~ .tab-buttons label[for="tab-nicho"] {
+/* Estado Activo para Pestañas de Categoría */
+#tab-disenador:checked ~ .category-buttons label[for="tab-disenador"],
+#tab-arabes:checked ~ .category-buttons label[for="tab-arabes"],
+#tab-nicho:checked ~ .category-buttons label[for="tab-nicho"] {
     background: linear-gradient(135deg, var(--red-primary), #990000);
     border-color: var(--red-glow);
     color: var(--text-white);
     box-shadow: 0 0 15px rgba(230, 0, 0, 0.6);
 }
 
-/* Tarjetas de producto */
+/* Estado Activo para Botones de Género */
+#gender-caballero:checked ~ .gender-buttons label[for="gender-caballero"],
+#gender-dama:checked ~ .gender-buttons label[for="gender-dama"] {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    font-weight: 800;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* Control de Despliegue de Grids por Categoría */
+.products-grid {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+#tab-disenador:checked ~ .content-disenador {
+    display: grid !important;
+}
+
+#tab-arabes:checked ~ .content-arabes {
+    display: grid !important;
+}
+
+#tab-nicho:checked ~ .content-nicho {
+    display: grid !important;
+}
+
+/* Control de Despliegue por Género */
+#gender-caballero:checked ~ .products-grid .product-card:not(.item-caballero) {
+    display: none !important;
+}
+
+#gender-dama:checked ~ .products-grid .product-card:not(.item-dama) {
+    display: none !important;
+}
+
+/* Tarjetas de Producto */
 .product-card {
     background-color: var(--bg-card);
     border-radius: 10px;
@@ -302,13 +351,19 @@ body {
 .product-img {
     width: 100%;
     height: 260px;
-    overflow: hidden;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
 }
 
 .product-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain !important;
     transition: transform 0.5s ease;
 }
 
@@ -440,11 +495,28 @@ body {
     margin: 0 auto;
 }
 
-.footer-msg {
-    font-size: 1.05rem;
-    color: var(--text-white);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
+.luxury-quote-box {
+    background: linear-gradient(145deg, #181818, #0d0d0d) !important;
+    border: 1px solid rgba(229, 190, 101, 0.5) !important;
+    border-left: 4px solid #e5be65 !important;
+    border-right: 4px solid #e5be65 !important;
+    border-radius: 8px !important;
+    padding: 1.5rem 2rem !important;
+    margin: 1.5rem auto 2.5rem auto !important;
+    max-width: 750px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(229, 190, 101, 0.15) !important;
+}
+
+.luxury-quote-text {
+    font-family: 'Playfair Display', 'Montserrat', serif, sans-serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    font-style: italic !important;
+    color: #e5be65 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8 !important;
+    margin: 0 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
 }
 
 .wpp-contact-info {
@@ -500,160 +572,8 @@ body {
         flex-direction: column;
     }
 
-    .tab-btn {
+    .category-buttons .btn-tab {
         width: 100%;
         text-align: center;
     }
-    /* Caja y texto de la frase con máxima prioridad */
-.luxury-quote-box {
-    background: linear-gradient(145deg, #181818, #0d0d0d) !important;
-    border: 1px solid rgba(229, 190, 101, 0.5) !important;
-    border-left: 4px solid #e5be65 !important;
-    border-right: 4px solid #e5be65 !important;
-    border-radius: 8px !important;
-    padding: 1.5rem 2rem !important;
-    margin: 1.5rem auto 2.5rem auto !important;
-    max-width: 750px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 15px rgba(229, 190, 101, 0.15) !important;
-}
-
-.luxury-quote-text {
-    font-family: 'Playfair Display', 'Montserrat', serif, sans-serif !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    font-style: italic !important;
-    color: #e5be65 !important;
-    letter-spacing: 1px !important;
-    line-height: 1.8 !important;
-    margin: 0 !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
-}
- /* --- Ajuste de imágenes del catálogo --- */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-.product-img {
-    width: 100%;
-    height: 260px;
-    background-color: #ffffff; /* Fondo blanco para limpiar el recorte */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-}
-
-.product-img img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain !important; /* Fuerza a que se vea el frasco completo sin Zoom */
-}   
-/* Ocultar los radio buttons del sistema de pestañas */
-.tab-radio {
-    display: none;
-}
-
-/* Ocultar todas las categorías por defecto */
-.content-disenador,
-.content-arabes,
-.content-nicho {
-    display: none;
-}
-
-/* Lógica CSS pura para mostrar la categoría seleccionada */
-#tab-disenador:checked ~ .content-disenador {
-    display: grid !important;
-}
-
-#tab-arabes:checked ~ .content-arabes {
-    display: grid !important;
-}
-
-#tab-nicho:checked ~ .content-nicho {
-    display: grid !important;
-}
-
-/* Estilos de los botones (labels) y estado activo */
-.btn-tab {
-    cursor: pointer;
-    user-select: none;
-}
-
-#tab-disenador:checked ~ .category-buttons label[for="tab-disenador"],
-#tab-arabes:checked ~ .category-buttons label[for="tab-arabes"],
-#tab-nicho:checked ~ .category-buttons label[for="tab-nicho"] {
-    background-color: #ff0000;
-    color: #ffffff;
-    border-color: #ff0000;
-}
-/* --- Sistema de pestañas con Radio Buttons (CSS Puro) --- */
-.tab-radio {
-    display: none;
-}
-
-/* Ocultar todas las categorías por defecto */
-.content-disenador,
-.content-arabes,
-.content-nicho {
-    display: none;
-}
-
-/* Mostrar la categoría seleccionada */
-#tab-disenador:checked ~ .content-disenador {
-    display: grid !important;
-}
-
-#tab-arabes:checked ~ .content-arabes {
-    display: grid !important;
-}
-
-#tab-nicho:checked ~ .content-nicho {
-    display: grid !important;
-}
-
-/* Estilos originales del contenedor de botones */
-.category-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin: 30px 0;
-    flex-wrap: wrap;
-}
-
-/* Estilo original de los botones (labels) */
-.category-buttons .btn-tab {
-    display: inline-block;
-    padding: 12px 24px;
-    border: 1px solid #333;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    user-select: none;
-}
-
-/* Efecto hover */
-.category-buttons .btn-tab:hover {
-    border-color: #ff0000;
-    color: #ffffff;
-}
-
-/* Estado ACTIVO (Botón seleccionado con iluminación roja) */
-#tab-disenador:checked ~ .category-buttons label[for="tab-disenador"],
-#tab-arabes:checked ~ .category-buttons label[for="tab-arabes"],
-#tab-nicho:checked ~ .category-buttons label[for="tab-nicho"] {
-    background-color: #e50914;
-    color: #ffffff;
-    border-color: #e50914;
-    box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
-}
 }
